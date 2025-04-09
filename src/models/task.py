@@ -17,10 +17,13 @@ class Status(Enum):
 
 @dataclass  # TODO: заменить на Pydantic
 class Task:
+    def __str__(self) -> str:
+        return f"Task: id={self.id}\n, name='{self.name}\n'"
+
     id: int
     name: str
     priority: Priority
-    deadline: datetime
+    deadline: datetime.date
     author: str
     description: str
     theme: str  # TODO: стоит использовать enum в будущем

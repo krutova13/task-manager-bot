@@ -7,6 +7,7 @@ database = {}
 filtered_database = {}
 sorted_database = {}
 
+
 def generate_id():
     global id
     with open("id.txt") as id_file:
@@ -19,6 +20,7 @@ def generate_id():
     print(new_id)
     return id
 
+
 def read_database():
     global database
     with open("database.json") as database_file:
@@ -26,17 +28,21 @@ def read_database():
     print(f"Вот текущая база данных: {database}.")
     return database
 
+
 def update_database():
     with open("database.json", mode="w") as database_file:
         json.dump(database, database_file)
     print(f"Вот обновленная база данных: {database}.")
 
+
 def add_task():
     id = generate_id()
     read_database()
-    task_attribute = getattr(data, f"task_{id}") #да я спиздел вот эту строку у ИИ, но я реально не мог понять как это сделать, но зато потом почитал про getattr()
-    database.update({f"{id}" : task_attribute})
+    task_attribute = getattr(data,
+                             f"task_{id}")  # да я спиздел вот эту строку у ИИ, но я реально не мог понять как это сделать, но зато потом почитал про getattr()
+    database.update({f"{id}": task_attribute})
     update_database()
+
 
 def delete_task(id):
     read_database()
@@ -45,6 +51,7 @@ def delete_task(id):
         update_database()
     else:
         print(f"Задачи с ID {id} нет в базе данных.")
+
 
 def filter_by(filter):
     read_database()
@@ -57,6 +64,7 @@ def filter_by(filter):
         print(f"Задач с фильтром {filter} нет в базе данных.")
     print(filtered_database)
 
+
 def filter_by_date(start_time, end_time):
     start = datetime.strptime(start_time, "%Y-%m-%d %H:%M:%S")
     end = datetime.strptime(end_time, "%Y-%m-%d %H:%M:%S")
@@ -66,6 +74,7 @@ def filter_by_date(start_time, end_time):
         if start <= creation <= end:
             filtered_database[task] = database[task]
     print(filtered_database)
+
 
 def sort_by_old():
     read_database()
