@@ -13,7 +13,7 @@ task1 = Task(
     theme="Обучение Python",
     owner_id=34,
     status=Status.NEW,
-    creation_date=datetime.now()
+    creation_date=datetime.now().replace(microsecond=0)
 )
 
 task2 = Task(
@@ -26,7 +26,7 @@ task2 = Task(
     theme="Обучение Python",
     owner_id=33,
     status=Status.IN_PROGRESS,
-    creation_date=datetime.now()
+    creation_date=datetime.now().replace(microsecond=0)
 )
 
 manager = TaskManager()
