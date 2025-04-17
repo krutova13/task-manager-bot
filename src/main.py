@@ -29,6 +29,19 @@ task2 = Task(
     creation_date=datetime.now()
 )
 
+task3 = Task(
+    id=3,
+    name="Создать 30 тасок",
+    priority=Priority.LOW,
+    deadline=date(2025, 10, 10),
+    author="Артемова",
+    description="Написать задачи для Обучения и развития своих навыков",
+    theme="Обучение Python",
+    owner_id=1,
+    status=Status.DONE,
+    creation_date=datetime.now()
+)
+
 manager = TaskManager()
 
 manager.add_task(task1)
