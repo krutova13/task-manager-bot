@@ -2,6 +2,7 @@ from datetime import datetime, date
 
 from src.models.task import Task, Priority, Status
 from src.services.task_manager import TaskManager
+from src.storage.task_storage import TaskStorage
 
 task1 = Task(
     id=1,
@@ -29,7 +30,9 @@ task2 = Task(
     creation_date=datetime.now()
 )
 
-manager = TaskManager()
+storage = TaskStorage()
+
+manager = TaskManager(storage)
 
 manager.add_task(task1)
 manager.add_task(task2)
