@@ -30,9 +30,32 @@ class Status(Enum):
         }
         return status[self]
 
-@dataclass  # TODO: заменить на Pydantic
+
+# @dataclass  # TODO: заменить на Pydantic
 class Task:
-    def __str__(self) -> str:
+    def __init__(self,
+                 id: int,
+                 name: str,
+                 priority: Priority,
+                 deadline: datetime.date,
+                 author: str,
+                 description: str,
+                 theme: str,  # TODO: стоит использовать enum в будущем
+                 owner_id: int,
+                 status: Status,
+                 creation_date: datetime):
+        self.id = id
+        self.name = name
+        self.priority = priority
+        self.deadline = deadline
+        self.author = author
+        self.description = description
+        self.theme = theme  # TODO: стоит использовать enum в будущем
+        self.owner_id = owner_id
+        self.status = status
+        self.creation_date = creation_date.replace(microsecond=0)
+
+    def __repr__(self) -> str:
         return (f"Задача\n"
                 f"Идентификатор: {self.id}\n"
                 f"Название: {self.name}\n"
@@ -53,7 +76,5 @@ class Task:
     description: str
     theme: str  # TODO: стоит использовать enum в будущем
     owner_id: int
-    status: Status = Status
-    creation_date: datetime = datetime.now()
-
-
+    status: Status
+    creation_date: datetime

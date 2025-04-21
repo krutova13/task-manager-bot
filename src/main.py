@@ -1,5 +1,4 @@
 from datetime import datetime, date
-
 from src.models.task import Task, Priority, Status
 from src.services.task_manager import TaskManager
 
@@ -13,7 +12,7 @@ task1 = Task(
     theme="Обучение Python",
     owner_id=34,
     status=Status.NEW,
-    creation_date=datetime.now().replace(microsecond=0)
+    creation_date=datetime.now()
 )
 
 task2 = Task(
@@ -26,7 +25,7 @@ task2 = Task(
     theme="Обучение Python",
     owner_id=33,
     status=Status.IN_PROGRESS,
-    creation_date=datetime.now().replace(microsecond=0)
+    creation_date=datetime.now()
 )
 
 manager = TaskManager()
@@ -34,4 +33,7 @@ manager = TaskManager()
 manager.add_task(task1)
 manager.add_task(task2)
 
-print(manager.get_tasks())
+tasks = manager.get_tasks()
+for task in tasks:
+    print(task)
+    print()
