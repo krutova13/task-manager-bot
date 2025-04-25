@@ -35,5 +35,5 @@ manager.add_task(task2)
 
 tasks = manager.get_tasks()
 for task in tasks:
-    print(task)
-    print()
+    print(task, "\n")
+
