@@ -1,5 +1,4 @@
 from datetime import datetime, date
-
 from src.models.task import Task, Priority, Status
 from src.services.task_manager import TaskManager
 from src.storage.task_storage import TaskStorage
@@ -37,4 +36,7 @@ manager = TaskManager(storage)
 manager.add_task(task1)
 manager.add_task(task2)
 
-print(manager.get_tasks())
+tasks = manager.get_tasks()
+for task in tasks:
+    print(task, "\n")
+

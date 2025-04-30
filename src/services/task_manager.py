@@ -1,5 +1,4 @@
 from __future__ import annotations
-
 from src.models.task import Task, Status
 from src.storage.storage import Storage
 
